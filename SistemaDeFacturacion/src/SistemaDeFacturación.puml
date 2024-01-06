@@ -1,0 +1,140 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+/'
+    Realizar programa que permita gestionar las facturas de una empresa ("SuperMaxi") los productos se clasifican en productos con iva y sin iva
+
+    Un supermercado que tiene ciertos productos
+    Un cliente se dirige a la caja con un carrito de productos
+    Se registran y se añaden a la factura
+    Se imprime la información de la factura de manera:
+
+    Producto    |   Cantidad    |   P.U.    |   P.T.    |   %Descuento  |
+                |               |           |           |               |
+                |               |           |           |               |
+                |               |           |           |               |
+                |               |           |           |               |
+                |               |           |           |               |
+    ---------------------------------------------------------------------
+
+                       (Precio sin iva)     Subtotal            .........
+                (Solo el valor del IVA)     IVA                 .........
+
+                  (Suma Subtotal + IVA)     TOTAL               .........
+
+
+    Cambios a realizar
+
+    En Ecuador en el año 2019 hubo un terremoto y hubo una emergencia nacional y el IVA subió al 14% en la región de la costa solo en ciertos productos. Y el IVA solo para clienteManaba es de 8%
+
+
+
+    1. productos  0 %
+    2. productos 12 %
+    3. productos 14 %
+    4. productos  8 %  Si el cliente es de Manabí
+
+'/
+
+class Supermercado {
+  - facturas: Vector<Factura>
+  - stock: Vector<Item>
+  - contadorProductosEnStock: int
+
+  + Supermercado()
+  + añadirAlStock(items: Vector<Item>)
+  + añadirAlStock(item: Item)
+  + getStock(): Vector<Item>
+  + getItemDelStock(posiciónStock: int): Item
+  + hayStockSuficiente(posiciónStock: int, cantidad: int): boolean
+
+  - restarStock(itemsAVender: Vector<Item>)
+  - restarStock(item: Item)
+  - restarStock(posiciónEnStockDeItem: int, cantidadARestar: int)
+
+  + imprimirStock()
+  + venderProductos(cliente: Cliente): Factura
+}
+
+class Factura {
+  - cliente: Cliente
+  - subTotalIVA: double
+  - subTotal: double
+  - total: double
+  - items: Vector<Item>
+
+  + Factura()
+  + Factura(cliente: Cliente)
+  + calcularSubTotal(): double
+  + calcularSubTotalIVA(): double
+  + calcularTotal(): double
+  + imprimir()
+}
+
+abstract class Producto {
+  - nombre: String
+  - precio: double
+
+  + Producto(nombre: String, precio: double)
+  + getNombre(): String
+  + getPrecio(): double
+  {abstract} getIVA(): double
+}
+
+class ProductoConIVA {
+  - IVA: final double
+
+  + ProductoConIVA(nombre: String, precio: double)
+  + getIVA(): double
+}
+
+class ProductoSinIVA {
+  + ProductoSinIVA(nombre: String, precio: double)
+  + getIVA(): double
+}
+
+class Item {
+  - producto: Producto
+  - cantidad: int
+  - númeroProducto: int
+
+  + Item(producto: Producto, cantidad: int)
+  + Item(númeroProducto: int, producto: Producto, cantidad: int)
+  + getProducto(): Producto
+  + getCantidad(): int
+  + getNúmeroProducto(): int
+  + getNombre(): String
+  + getIVA(): double
+  + getPrecio(): double
+  + getPrecioTotal(): double
+  + setNúmeroProducto(númeroProducto: int)
+  + restarCantidad(cantidadARestar: int)
+}
+
+class Cliente {
+  - nombre: String
+  - cédula: String
+  - carritoDeCompras: Vector<Item>
+  + Cliente(nombre: String, cédula: String)
+  + getNombre(): String
+  + getCédula(): String
+  + getCarritoDeCompras(): Vector<Item>
+  + agregarAlCarrito(supermercado: Supermercado, posiciónItem: int, cantidad: int)
+  + imprimirCarritoCompras()
+}
+
+Supermercado -r-> "*" Factura
+Supermercado -> "*" Item
+
+Factura -> "1" Cliente
+Factura -> "*" Item
+
+Cliente --> "*" Item
+Cliente <|-- ClienteManaba
+
+Item -l-> "1" Producto
+
+Producto <|-- ProductoConIVA
+Producto <|-- ProductoSinIVA
+
+@enduml

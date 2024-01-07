@@ -4,6 +4,7 @@ public class Item {
 	private int cantidad;
 	private int númeroProducto;
 
+
 	public Item(Producto producto, int cantidad) {
 		this.producto = producto;
 		this.cantidad = cantidad;
@@ -45,7 +46,10 @@ public class Item {
 	}
 
 
-	public void restarCantidad(int cantidadARestar) {
-		this.cantidad = cantidad - cantidadARestar;
+	public void aumentarCantidad(int cantidadPorAumentar){
+		this.cantidad += cantidadPorAumentar;
+	}
+	public void disminuirCantidad(int cantidadPorRestar) {
+		this.cantidad -= cantidadPorRestar;
 	}
 }

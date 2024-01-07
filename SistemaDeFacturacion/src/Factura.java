@@ -9,6 +9,7 @@ public class Factura {
 	private double IVAaAplicar;
 	private final Vector<Item> items;
 
+
 	public Factura() {
 		this.subTotalIVA = 0;
 		this.subTotal = 0;
@@ -32,7 +33,7 @@ public class Factura {
 	}
 
 
-	public double calcularSubTotal(){
+	private double calcularSubTotal(){
 
 		double precio;
 		double cantidad;
@@ -47,7 +48,7 @@ public class Factura {
 
 		return subTotal;
 	}
-	public double calcularSubTotalIVA(){
+	private double calcularSubTotalIVA(){
 
 		double precio;
 		double IVA;
@@ -78,7 +79,7 @@ public class Factura {
 
 		return subTotalIVA;
 	}
-	public double calcularTotal(){
+	private double calcularTotal(){
 		return total = subTotal + subTotalIVA;
 	}
 

@@ -1,10 +1,10 @@
-abstract class ClienteConIvaEspecial extends Cliente {
+class ClienteConIvaEspecial extends Cliente {
 
 	double IVAaAplicar;
 
-	public ClienteConIvaEspecial(String nombre, String cédula, double IvaEspecial) {
+	public ClienteConIvaEspecial(String nombre, String cédula, double IVAaAplicar) {
 		super(nombre, cédula);
-		this.IVAaAplicar = IvaEspecial;
+		this.IVAaAplicar = IVAaAplicar;
 	}
 
 	public double getIVAaAplicar(){

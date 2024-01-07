@@ -1,22 +1,20 @@
-import java.sql.SQLOutput;
-
 public class Main {
 	public static void main(String[] args) {
 
 		Supermercado supermercado = new Supermercado();
 
-		// SIN IVA
-		supermercado.añadirAlStock(new Item(new ProductoSinIVA("Atún Real 100g", 1.25 ), 10));
-		supermercado.añadirAlStock(new Item(new ProductoSinIVA("Leche 1L",       0.90 ), 10));
+		supermercado.añadirAlStock(new ProductoSinIVA("Atún Real 100g", 1.25), 10);
+		supermercado.añadirAlStock(new ProductoSinIVA("Leche Vita 1L",  0.90), 10);
+		supermercado.añadirAlStock(new ProductoConIVA("Galletas Oreo",  0.75), 10);
+		supermercado.añadirAlStock(new ProductoConIVA("Vino",           6.80), 10);
 
-		// CON IVA
-		supermercado.añadirAlStock(new Item(new ProductoConIVA("Galletas Oreo",  0.75 ), 10));
-		supermercado.añadirAlStock(new Item(new ProductoConIVA("Vino",           6.80 ), 10));
 
 		// PRUEBAS DE PROGRAMA
-		// pruebaManejoCorrecto(supermercado);
+		pruebaManejoCorrecto(supermercado);
 		// pruebaFaltaDeStock(supermercado);
-		pruebaClienteManaba(supermercado);
+		// pruebaClienteManaba(supermercado);
+
+		supermercado.imprimirStock();
 
 	}
 
@@ -28,7 +26,7 @@ public class Main {
 		cliente.agregarAlCarrito(supermercado, 2, 3);
 		cliente.agregarAlCarrito(supermercado, 3, 6);
 
-		Factura factura = supermercado.venderProductos(cliente);
+		Factura factura = supermercado.generarFactura(cliente);
 		factura.imprimir();
 	}
 	public static void pruebaFaltaDeStock(Supermercado supermercado){
@@ -38,7 +36,7 @@ public class Main {
 		cliente.agregarAlCarrito(supermercado, 0, 4);       // sobran 6
 		cliente.agregarAlCarrito(supermercado, 3, 5);       // falta 1 por lo que no se añade
 
-		Factura factura = supermercado.venderProductos(cliente);
+		Factura factura = supermercado.generarFactura(cliente);
 		factura.imprimir();
 	}
 	public static void pruebaClienteManaba(Supermercado supermercado){
@@ -47,8 +45,14 @@ public class Main {
 		cliente.agregarAlCarrito(supermercado, 2, 3);
 		cliente.agregarAlCarrito(supermercado, 3, 6);
 
-		Factura factura = supermercado.venderProductos(cliente);
+		Factura factura = supermercado.generarFactura(cliente);
 		factura.imprimir();
+
+	}
+
+
+	// TODO
+	public static void pruebaManejoCarritoCliente(Supermercado supermercado){
 
 	}
 
@@ -58,10 +62,10 @@ public class Main {
 /*
 	! LISTA DE PRIORIDADES PARA CORRECCIONES
 
-	- La solución es crear una clase Cliente Normal en la que se inicialice la factura de cierta manera
-	- de lo contrario si se inicializa con ClienteConIvaEspecial
-	- pero para eso Cliente debe volverse una clase abstracta...
-
-	IMPORTANTE PARA ENTENDER LA IDEA: Revisar las clases herederas de Cliente en el diagrama de clases para entender
+	-   Posteriormente, cuando se añadan al Stock también se debe poder verificar que productos existen dentro del Stock
+	-   De esa forma en la Clase cliente también debe existir un vector de productos para poder modificar la cantidad de
+		cierto producto cuando se quiera añadir o quitar
+	-   Así un algoritmo de búsqueda por posición del item resulta más sencilla además de que resulta posible determinar
+		la posición en un inicio
 
  */

@@ -28,7 +28,7 @@ ClienteConIvaEspecial <|-- ClienteManaba
 
 Item -l-> "1" Producto
 
-Producto <|-- ProductoConIVA
+Producto <|-- ProductoConIVA12
 Producto <|-- ProductoSinIVA
 
 @enduml

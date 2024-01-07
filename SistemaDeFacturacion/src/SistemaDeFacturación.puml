@@ -36,6 +36,7 @@
 
 '/
 
+
 class Supermercado {
   - facturas: Vector<Factura>
   - stock: Vector<Item>

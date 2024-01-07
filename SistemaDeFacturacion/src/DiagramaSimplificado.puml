@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class Cliente
+
+abstract class ClienteConIvaEspecial{
+    - {static} IVAaAplicar: double
+}
+
+class ClienteNormal
+
+class ClienteManaba {
+    - {static} IVAaAplicar = 0.08
+}
+
+
+Supermercado -r-> "*" Factura
+Supermercado -> "*" Item
+
+Factura -> "1" Cliente
+Factura -> "*" Item
+
+Cliente --> "*" Item
+Cliente <|-- ClienteNormal
+Cliente <|-r- ClienteConIvaEspecial
+ClienteConIvaEspecial <|-- ClienteManaba
+
+
+Item -l-> "1" Producto
+
+Producto <|-- ProductoConIVA
+Producto <|-- ProductoSinIVA
+
+@enduml

@@ -1,11 +1,10 @@
 import java.util.Vector;
 
-public class Cliente {
+abstract public class Cliente {
 
-	private final String nombre;
-	private final String cédula;
+	private String nombre;
+	private String cédula;
 	private Vector<Item> carritoDeCompras;
-
 	public Cliente(String nombre, String cédula) {
 		this.nombre = nombre;
 		this.cédula = cédula;
@@ -41,6 +40,8 @@ public class Cliente {
 			System.out.println( item.getCantidad() + "\t\t|   " + item.getNombre());
 		}
 	}
+
 }
 
 //  TODO    public void retirarItem(Producto producto, int cantidad)
+// private final double IVA = 0;   // si es que cliente es independiente del IVA significaría que si IVA se inicializa en 0, no hay problema

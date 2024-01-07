@@ -2,37 +2,37 @@
 'https://plantuml.com/class-diagram
 
 /'
-    Realizar programa que permita gestionar las facturas de una empresa ("SuperMaxi") los productos se clasifican en productos con iva y sin iva
 
-    Un supermercado que tiene ciertos productos
-    Un cliente se dirige a la caja con un carrito de productos
-    Se registran y se añaden a la factura
-    Se imprime la información de la factura de manera:
+    Realizar programa que permita gestionar las facturas de una empresa ("SuperMaxi") los
+    productos se clasifican en productos con iva y sin iva
 
-    Producto    |   Cantidad    |   P.U.    |   P.T.    |   %Descuento  |
-                |               |           |           |               |
-                |               |           |           |               |
-                |               |           |           |               |
-                |               |           |           |               |
-                |               |           |           |               |
-    ---------------------------------------------------------------------
-
-                       (Precio sin iva)     Subtotal            .........
-                (Solo el valor del IVA)     IVA                 .........
-
-                  (Suma Subtotal + IVA)     TOTAL               .........
+    1.  Un supermercado que tiene ciertos productos
+    2.  Un cliente se dirige a la caja con un carrito de productos
+    3.  Se registran y se añaden a la factura
+    4.  Se imprime la información de la factura de la manera en que se muestra posteriormente
+    5.  Se registra la factura en el supermercado al momento de vender los productos
 
 
-    Cambios a realizar
+            Producto    |   Cantidad    |   P.U.    |   P.T.    |   %Descuento  |
+                        |               |           |           |               |
+                        |               |           |           |               |
+                        |               |           |           |               |
+                        |               |           |           |               |
+                        |               |           |           |               |
+            ---------------------------------------------------------------------
 
-    En Ecuador en el año 2019 hubo un terremoto y hubo una emergencia nacional y el IVA subió al 14% en la región de la costa solo en ciertos productos. Y el IVA solo para clienteManaba es de 8%
+                               (Precio sin iva)     Subtotal            .........
+                        (Solo el valor del IVA)     IVA                 .........
+
+                          (Suma Subtotal + IVA)     TOTAL               .........
 
 
 
-    1. productos  0 %
-    2. productos 12 %
-    3. productos 14 %
-    4. productos  8 %  Si el cliente es de Manabí
+    CAMBIOS A REALIZAR:
+
+    -  En Ecuador en el año 2019 hubo un terremoto y hubo una emergencia nacional y el IVA
+       subió al 14% en la región de la costa solo en ciertos productos. Y el IVA solo para
+       clienteManaba es de 8%
 
 '/
 
@@ -111,7 +111,7 @@ class Item {
   + restarCantidad(cantidadARestar: int)
 }
 
-class Cliente {
+abstract class Cliente {
   - nombre: String
   - cédula: String
   - carritoDeCompras: Vector<Item>
@@ -123,6 +123,19 @@ class Cliente {
   + imprimirCarritoCompras()
 }
 
+abstract class ClienteConIvaEspecial{
+    - {static} IVAaAplicar: double
+}
+
+class ClienteNormal {
+}
+
+class ClienteManaba {
+    - {static} IVAaAplicar = 0.08
+    + setIVAaAplicar()
+}
+
+
 Supermercado -r-> "*" Factura
 Supermercado -> "*" Item
 
@@ -130,7 +143,10 @@ Factura -> "1" Cliente
 Factura -> "*" Item
 
 Cliente --> "*" Item
-Cliente <|-- ClienteManaba
+Cliente <|-- ClienteNormal
+Cliente <|-r- ClienteConIvaEspecial
+ClienteConIvaEspecial <|-- ClienteManaba
+
 
 Item -l-> "1" Producto
 

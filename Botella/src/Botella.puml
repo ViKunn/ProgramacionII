@@ -4,14 +4,25 @@ class Botella{
     - color: String
     - capacidadMáximaLitros: double
     - capacidadActualLitros: double
-    - material: material
+    - material: String
     - pesoOnzas: double
-    - tapado: bolean
-    + Botella(color, capacidadActualLitros, material, pesoOnzas)
-    + llenar(cantidadLitros: double)
+    - tapado: boolean
+
+    + llenar()
+    + llenar(otraBotella: Botella)
+    + llenar(cantidadALlenar: double)
+
+    - obtenerCapacidadResidual(): double
+    - estaTapado(): boolean
+
     + vaciar()
+    + vaciar(cantidadAVaciar: double)
+
     + tapar()
     + destapar()
+
+    + imprimirCapacidadActual()
+
 }
 
 @enduml

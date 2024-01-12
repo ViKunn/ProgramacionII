@@ -1,5 +1,4 @@
 public class Camiseta {
-
 	private static final int NUMERO_MAX_LAVADAS = 3;
 	private static final int NUMERO_MAX_ARREGLOS = 5;
 

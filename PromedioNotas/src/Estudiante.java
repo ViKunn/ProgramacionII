@@ -15,14 +15,19 @@ public class Estudiante {
 	public double nota2;
 	private double promedio;
 
+	// Constructor por defecto
+	public Estudiante() {
+	}
+
 	/*  Constructores:
 		Me permite inicializar una "estructura" a partir de los atributos del estudiante, usando Estudiante como un MÉTODO
 		Estudiante() es un MÉTODO, que se puede usar para INICIALIZAR los datos de un objeto */
 
-	public Estudiante(String nombre, String correo) {
-		// utilizar los métodos setter... o asignar
+	public Estudiante(String nombre, String correo, double nota1, double nota2) {
 		this.nombre = nombre;
 		this.correo = correo;
+		this.nota1 = nota1;
+		this.nota2 = nota2;
 	}
 
 	/*  Estas funciones en nuestro programa son PROPIOS del estudiante, entonces se puede añadir estas funciones

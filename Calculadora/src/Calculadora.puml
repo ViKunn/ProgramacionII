@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Calculadora{
+    + realizarOperación(Operación, double, double)
+}
+
+abstract class OperacionesBásicas
+
+class Suma{
+    - resultado: double
+    + realizarOperación(double, double)
+    + getResultado(): Resultado
+}
+
+abstract class SistemaNumérico {
+    + {abstract} transformarADecimal()
+}
+
+Calculadora <|-- OperacionesBásicas
+Calculadora .r. SistemaNumérico
+
+OperacionesBásicas <|-- Suma
+
+SistemaNumérico <|-- Decimal
+SistemaNumérico <|-- Binario
+SistemaNumérico <|-- Hexadecimal
+
+
+@enduml

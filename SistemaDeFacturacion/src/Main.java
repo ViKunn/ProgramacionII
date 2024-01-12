@@ -1,4 +1,5 @@
 public class Main {
+
 	public static void main(String[] args) {
 
 		Supermercado supermercado = new Supermercado();
@@ -8,23 +9,23 @@ public class Main {
 		supermercado.añadirAlStock(new ProductoConIVA("Galletas Oreo",  0.75), 10);
 		supermercado.añadirAlStock(new ProductoConIVA("Vino",           6.80), 10);
 
-
 		// PRUEBAS DE PROGRAMA
-		pruebaManejoCorrecto(supermercado);
+		pruebaClienteNormal(supermercado);
+		pruebaClienteManaba(supermercado);
 		// pruebaFaltaDeStock(supermercado);
-		// pruebaClienteManaba(supermercado);
 
+		System.out.println("\n\n");
 		supermercado.imprimirStock();
 
 	}
 
-	public static void pruebaManejoCorrecto(Supermercado supermercado){
+	public static void pruebaClienteNormal(Supermercado supermercado){
 
 		ClienteNormal cliente = new ClienteNormal("LUIS ESPÍN", "1700217143");
 
-		cliente.agregarAlCarrito(supermercado, 1, 2);
-		cliente.agregarAlCarrito(supermercado, 2, 3);
-		cliente.agregarAlCarrito(supermercado, 3, 6);
+		// cliente.agregarAlCarrito(supermercado, 1, 1);
+		cliente.agregarAlCarrito(supermercado, 2, 2);
+		cliente.agregarAlCarrito(supermercado, 3, 3);
 
 		Factura factura = supermercado.generarFactura(cliente);
 		factura.imprimir();
@@ -40,19 +41,13 @@ public class Main {
 		factura.imprimir();
 	}
 	public static void pruebaClienteManaba(Supermercado supermercado){
-		ClienteConIvaEspecial cliente = new ClienteManaba("PAMELA ESPÍN", "1600864845");
+		ClienteConIvaEspecial clienteManaba = new ClienteManaba("PAMELA ESPÍN", "1600864845");
 
-		cliente.agregarAlCarrito(supermercado, 2, 3);
-		cliente.agregarAlCarrito(supermercado, 3, 6);
+		clienteManaba.agregarAlCarrito(supermercado, 2, 2);
+		clienteManaba.agregarAlCarrito(supermercado, 3, 3);
 
-		Factura factura = supermercado.generarFactura(cliente);
+		Factura factura = supermercado.generarFactura(clienteManaba);
 		factura.imprimir();
-
-	}
-
-
-	// TODO
-	public static void pruebaManejoCarritoCliente(Supermercado supermercado){
 
 	}
 
@@ -60,6 +55,7 @@ public class Main {
 
 
 /*
+
 	! LISTA DE PRIORIDADES PARA CORRECCIONES
 
 	-   Posteriormente, cuando se añadan al Stock también se debe poder verificar que productos existen dentro del Stock

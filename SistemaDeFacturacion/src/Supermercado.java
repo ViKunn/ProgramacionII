@@ -1,8 +1,11 @@
+import java.util.Dictionary;
 import java.util.Vector;
 
 public class Supermercado {
 	private Vector<Factura> facturas;
 	private Vector<Item> stock;
+
+
 	private int contadorProductosEnStock;
 
 	public Supermercado() {
@@ -73,6 +76,8 @@ public class Supermercado {
 	}
 
 	// la factura se genera de acuerdo con el tipo de cliente que ingresa
+
+
 	public Factura generarFactura(ClienteNormal clienteNormal){
 		Factura factura = new Factura(clienteNormal);
 		venderProductos(factura, clienteNormal);

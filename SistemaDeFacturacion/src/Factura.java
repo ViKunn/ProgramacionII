@@ -10,24 +10,19 @@ public class Factura {
 	private final Vector<Item> items;
 
 
-	public Factura() {
-		this.subTotalIVA = 0;
-		this.subTotal = 0;
-		this.total = 0;
-		items = new Vector<>();
-	}
-	public Factura(ClienteNormal cliente) {
+	private Factura(Cliente cliente) {
 		this.cliente = cliente;
 		this.items = cliente.getCarritoDeCompras();
 		subTotal = calcularSubTotal();
+	}
+
+	public Factura(ClienteNormal cliente) {
+		this((Cliente) cliente);
 		subTotalIVA = calcularSubTotalIVA();
 		total = calcularTotal();
 	}
 	public Factura(ClienteConIvaEspecial cliente){
-		this.cliente = cliente;
-		this.items = cliente.getCarritoDeCompras();
-		IVAaAplicar = cliente.getIVAaAplicar();
-		subTotal = calcularSubTotal();
+		this((Cliente) cliente);
 		subTotalIVA = calcularSubTotalIVA(cliente);
 		total = calcularTotal();
 	}
@@ -35,6 +30,7 @@ public class Factura {
 
 	private double calcularSubTotal(){
 
+		double total = 0;
 		double precio;
 		double cantidad;
 
@@ -43,20 +39,22 @@ public class Factura {
 			precio = item.getPrecio();
 			cantidad = item.getCantidad();
 
-			subTotal +=  precio * cantidad;
+			total +=  precio * cantidad;
 		}
 
-		return subTotal;
+		return total;
 	}
-	private double calcularSubTotalIVA(){
 
+	private double calcularSubTotalIVA() {
+
+		double total;
 		double precio;
 		double IVA;
 
-		for (Item item: items) {
-			IVA = item.getIVA();
+		for (Item item: items){
+			IVAaAplicar = item.getIVA();
 			precio = item.getPrecioTotal();
-			subTotalIVA +=  precio * IVA;
+			subTotalIVA +=  precio * IVAaAplicar;
 		}
 
 		return subTotalIVA;
@@ -79,6 +77,7 @@ public class Factura {
 
 		return subTotalIVA;
 	}
+
 	private double calcularTotal(){
 		return total = subTotal + subTotalIVA;
 	}

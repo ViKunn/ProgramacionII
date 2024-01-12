@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class Vehículo{
+- númeroDeLlantas: int
+- capacidad: int
++ acelerar()
++ frenar()
++ {abstract} alistarSeguridad()
+}
+class Bicicleta{
++ ponerCasco()
+}
+abstract class VehículoConMotor{
+- matrícula: String
++ arrancar()
++ apagar()
+}
+class Asiento
+class Bus{
++ agarrarElTubo()
+}
+class Moto{
++ ponerCasco()
+}
+class Carro{
++ ponerCinturón()
+}
+
+Vehículo <|-- VehículoConMotor
+Vehículo <|-- Bicicleta
+Vehículo --> Asiento
+
+VehículoConMotor <|-- Moto
+VehículoConMotor <|-- Bus
+VehículoConMotor <|-- Carro
+
+@enduml

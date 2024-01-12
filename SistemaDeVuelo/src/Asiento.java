@@ -12,5 +12,5 @@ public class Asiento {
 	public void reservar(){
 		disponible = false;
 	}
-	
+
 }

@@ -1,0 +1,55 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Vuelo{
+
+- numeroVuelo: int
+
+- avion: String
+- fechaVuelo: String
+- origen: String
+- destino: String
+
+- tickets: Ticket[]
+- asientosEconomicos: Asiento[]
+- asientosPremium: Asiento[]
+
+- contarAsientosDisponibles()
++ guardarTicket(Ticket ticket)
++ mostrarEstadoVuelo()
+
+}
+
+class Ticket {
+
++ ECONOMICO: const int
++ PREMIUM
+
+- nombrePasajero: String
+- tipoTicket: String
+- numeroTicket: int
+- contadorTickets: int
+- cancelado: boolean
+- asiento: Asiento
+
++ vender()
++ estáCancelado()
++ cancelar()
+
+}
+
+class Asiento{
+
+- numeroAsiento: int
+- disponible: boolean
+
++ estáLibre()
++ asignar()
+
+}
+
+Vuelo  --> Ticket  : "1...n"
+Vuelo  --> Asiento : "1...n"
+Ticket --> Asiento : "1"
+
+@enduml

@@ -1,0 +1,42 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Banco{
+
+- nombre: String
+
++ transferir(origen: Cuenta, destino: Cuenta, monto: float)
+
+}
+
+class Cliente{
+
+- nombre: String
+- cédula: int
+
+}
+
+class Cuenta{
+
+- tipoCuenta: TipoCuenta
+- numero: String
+
++ depositar(monto: float)
++ retirar(monto: float)
+
+}
+
+class Transacción{
+- monto: double
+- tipoTransacción: TipoTransacción
+}
+
+
+Banco -->"*" Cliente: - clientes
+Cliente -->"*" Cuenta: - cuentas
+Cuenta <- Transacción: - cuentaDestino
+Cuenta <- Transacción: - cuentaOrigen
+
+Banco ->"*" Transacción: -transacciones
+
+@enduml

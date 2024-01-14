@@ -7,8 +7,6 @@ public class Fecha {
 	private int month;
 	private int year;
 
-
-	// TODO añadir condicionales para constructor de fecha
 	public Fecha(int day, int month, int year) {
 
 		if (day > DIAS || month > MESES){

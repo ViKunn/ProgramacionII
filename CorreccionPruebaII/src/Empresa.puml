@@ -1,0 +1,52 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title Generación de turnos para la empresa XYZ
+
+class Cliente {
+
+    - nombre: String
+    - turno: Turno
+
+}
+
+class TurnosDelDía {
+    - cantidadMáximaDeTurnosPorDía: int
+    - turnos: Vector<Turno>
+    - fecha: Fecha
+}
+
+class Turno {
+    - fecha: Fecha;
+}
+
+class Empresa {
+
+    - nombre: String
+    - fechaActual: Fecha
+    - turnos: HashMap <Fecha, Vector<Turno>>
+
+    + reservarTurno(cliente: Cliente, fecha: Fecha): void
+    + cancelarTurno(cliente: Cliente): void
+
+    + imprimirTurnos(fecha: Fecha): void
+}
+
+class Fecha {
+
+    - dia: int
+    - mes: int
+    - año: int
+
+    + esPosteriorAOtraFecha(otra: Fecha): boolean
+}
+
+
+Empresa --> "*" Turno
+Empresa --> "1   " Fecha
+Turno -> "1 " Fecha
+
+Cliente -> Turno
+
+
+@enduml

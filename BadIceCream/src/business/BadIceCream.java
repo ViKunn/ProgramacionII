@@ -27,6 +27,7 @@ public class BadIceCream {
 		menu.start();
 	}
 
+
 	public static int getGameUnitsX() {
 		return gameUnitsX;
 	}

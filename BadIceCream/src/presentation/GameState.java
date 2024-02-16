@@ -38,6 +38,7 @@ public class GameState extends JPanel implements Runnable {
 			System.out.println("Corriendo juego");
 			count ++;
 		}
+
 	}
 
 	public void update(int runningLevel){

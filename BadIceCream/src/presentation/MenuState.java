@@ -8,8 +8,10 @@ public class MenuState implements Runnable{
 	private boolean running;
 
 	public MenuState() {
+
 		game = new GameState();
 		running = true;
+
 	}
 
 	public void start(){

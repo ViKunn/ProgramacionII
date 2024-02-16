@@ -6,6 +6,7 @@ public class Main {
 
 		BadIceCream badIceCream = new BadIceCream();
 		badIceCream.start();
+		
 
 	}
 

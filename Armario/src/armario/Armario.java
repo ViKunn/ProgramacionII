@@ -1,3 +1,5 @@
+package armario;
+
 import java.util.Vector;
 
 public class Armario {
@@ -10,7 +12,7 @@ public class Armario {
 	public Armario(int capacidadArmario) {
 		this.capacidadArmario = capacidadArmario;
 		camisetas = new Vector<Camiseta>();
-		//camisetas = new Camiseta[capacidadArmario];
+		//camisetas = new armario.Camiseta[capacidadArmario];
 	}
 
 

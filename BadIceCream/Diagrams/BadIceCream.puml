@@ -1,0 +1,89 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam roundcorner 20
+
+skinparam class {
+BackgroundColor LightBlue
+ArrowColor Black
+BorderColor Black
+}
+
+skinparam linetype ortho
+
+
+class BadIceCream
+
+package presentation{
+
+    class Window
+
+
+    package states{
+        class GameState
+        class MenuState
+    }
+
+}
+
+package business{
+
+    package gameObjects{
+
+        package characters{
+
+            package enemies{
+                class Enemy
+            }
+
+            package players{
+                class Player
+            }
+        }
+
+        package fruits{
+            class Fruit
+            class FruitWithMovement
+        }
+
+        package interactiveBlocks{
+            class Ice
+        }
+
+    }
+
+    package levels{
+        class Level
+    }
+
+    package interfaces{
+        interface Movable
+        interface IceBreaker
+        interface Collectable
+    }
+
+}
+
+BadIceCream --> MenuState
+BadIceCream --> Window
+
+MenuState --> GameState
+
+GameState --> Level
+GameState --> Player
+
+Level ... Player
+Level --> Enemy
+Level --> Fruit
+
+Fruit <|-- FruitWithMovement
+
+Fruit ...> Collectable
+
+FruitWithMovement ...> Movable
+Player ...> Movable
+Enemy ...> Movable
+
+Player ...> IceBreaker
+
+@enduml

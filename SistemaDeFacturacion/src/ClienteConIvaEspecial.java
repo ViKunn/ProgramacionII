@@ -1,6 +1,6 @@
 class ClienteConIvaEspecial extends Cliente {
 
-	double IVAaAplicar;
+	private double IVAaAplicar;
 
 	public ClienteConIvaEspecial(String nombre, String cédula, double IVAaAplicar) {
 		super(nombre, cédula);

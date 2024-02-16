@@ -106,12 +106,14 @@ public class Vuelo {
 		String ticketsVendidos = "";
 
 		for (Ticket ticketVendido: this.ticketsVendidos) {
-			ticketsVendidos += ticketVendido + "\n";
+			if (ticketVendido != null){
+				ticketsVendidos += ticketVendido + "\n";
+			}
 		}
 
 		return ticketsVendidos;
 	}
-
+	
 	@Override
 	public String toString(){
 

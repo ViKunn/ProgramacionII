@@ -1,7 +1,7 @@
 public class Fecha {
 
-	private final int DIAS = 30;
-	private final int MESES = 12;
+	private static final int DIAS = 30;
+	private static final int MESES = 12;
 
 	private int day;
 	private int month;

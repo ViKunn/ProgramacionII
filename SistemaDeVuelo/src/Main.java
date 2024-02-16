@@ -41,7 +41,6 @@ public class Main {
 		System.out.println("\n-> COMPROBANDO ESTADO DE VUELO");
 		System.out.println(vuelo1);
 
-
 	}
 }
 

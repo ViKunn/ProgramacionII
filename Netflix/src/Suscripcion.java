@@ -1,4 +1,5 @@
 public enum Suscripcion {
+
     BASICO(1, 4.99),
     ESTANDAR(2, 7.99),
     PREMIUM(5, 10.99),

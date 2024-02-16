@@ -1,3 +1,5 @@
+package armario;
+
 public class Camiseta {
 	private static final int NUMERO_MAX_LAVADAS = 3;
 	private static final int NUMERO_MAX_ARREGLOS = 5;
@@ -73,5 +75,9 @@ public class Camiseta {
 		return "Estado: " +
 				(sucio ? "Sucia" : "Limpia") + ", " +
 				(destruido ? "Destruido" : (roto ? "Roto" : "Buen estado"));
+	}
+
+	public boolean estaSucia() {
+		return sucio;
 	}
 }

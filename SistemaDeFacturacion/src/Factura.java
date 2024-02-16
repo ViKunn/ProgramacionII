@@ -27,7 +27,6 @@ public class Factura {
 		total = calcularTotal();
 	}
 
-
 	private double calcularSubTotal(){
 
 		double total = 0;

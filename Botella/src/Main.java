@@ -22,6 +22,8 @@ public class Main {
 		botella.vaciar(); //capacidadActualLitros = 2
 		botella.imprimirCapacidadActual();
 
+		RecipienteTapado a = new RecipienteTapado();
+		a.printStackTrace();
 
 		System.out.println("\nBOTELLA 2:");
 

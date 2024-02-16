@@ -14,6 +14,6 @@ public abstract class Producto {
 		return precio;
 	}
 
-	abstract double getIVA();
+	public abstract double getIVA();
 
 }

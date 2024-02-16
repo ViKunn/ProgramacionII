@@ -5,7 +5,7 @@ public class ProductoSinIVA extends Producto{
 	}
 
 	@Override
-	double getIVA() {
+	public double getIVA() {
 		return 0;
 	}
 
